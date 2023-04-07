@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oracle Online Proctoring System </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color:#032243;
+
+
+;
+        }
+        
+        #container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100% ;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2%;
+        }
+
+        #content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #video {
+            border: 1px solid #000;
+        }
+        
+        #details-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-left: 20px;
+            width: auto; /* Adjust the width as needed */
+            max-height: 480px; /* Match the height of the video */
+            overflow-y: auto; /* Add scrollbar if the content exceeds the container height */
+        }
+
+        #oracle-container h1 {
+            text-align: center;
+        }
+
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 2px;
+            cursor: pointer;
+        }
+
+        #header-image {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        footer {
+            background-color: rgba(23, 14, 59, 1);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            max-width: 1405px;
+
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- This is the HTML code for the webpage. -->
+    <div id="container">
+        <div>
+            <img id="header-image" src="https://raw.githubusercontent.com/Astroes619/Oracle_assets/main/logos/oracle.png" > <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris </p>
+            <div id="content">
+                <div id="video-container">
+                    <img id="video" src="{% url 'dynamic_stream' %}" alt="Video stream not available"><br>
+                    <i class="fas fa-camera"></i> Some text about the application goes here
+                        <div id ="video-description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ullamco laboris nisi ut aliquip ex ea commodo consequat. ullamco laboris nisi ut.
+                        </div>
+
+                </div>
+                <div id="details-container">
+                    <ul>
+                        <h3>Lorem ipsum dolor sit amet,</h3>
+                        <li> consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+                        <h3>Ut enim ad minim veniam,</h3>
+                        <li> quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                        <h3>Ullamco laboris nisi ut.</h3>
+                        <li>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                        
+                    </ul>               
+                </div>
+            </div>
+
+            <div id="question-container">
+                <h1> Question Paper </h1>  
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfOU7TIp9GtvrlzSRNfz8n5Kn2iw8I28zFaT81tHUlZyFnofw/viewform?embedded=true" width="640" height="3538" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                
+                
+            </div>
+
+            <div id="oracle-container">
+                <div id="usage-container">
+                    <h1>Why Use Oracle</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+                    </p> <br>
+                </div>
+                <div id="importance-container">
+                    <h1>What is the importance of implementing a system like ORACLE ?</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    </p> <br>
+
+
+                </div>
+
+            </div>
+
+           
+
+            <div id="logo-container">
+                <h1>Technologies Used</h1>
+
+
+                <img id="heroku" src="https://raw.githubusercontent.com/Astroes619/Oracle_assets/main/logos/image%2010.png" width="60" height="75" > 
+                <img id="python" src="https://raw.githubusercontent.com/Astroes619/Oracle_assets/main/logos/image%202.png"width="60" height="75" > 
+                <img id="django" src="https://raw.githubusercontent.com/Astroes619/Oracle_assets/main/logos/image%208.png" > 
+                <img id="anaconda" src="https://raw.githubusercontent.com/Astroes619/Oracle_assets/main/logos/image%206.png" > 
+                <img id="html" src="https://raw.githubusercontent.com/Astroes619/Oracle_assets/main/logos/html%201.png"width="60" height="85" > 
+                <img id="css" src="https://raw.githubusercontent.com/Astroes619/Oracle_assets/main/logos/css%201.png"width="60" height="85"> 
+                <img id="javascript" src="https://raw.githubusercontent.com/Astroes619/Oracle_assets/main/logos/image%2011.png" width="60" height="65"> 
+                <img id="firebase" src="https://raw.githubusercontent.com/Astroes619/Oracle_assets/main/logos/image%209.png"width="60" height="65" > 
+
+
+            </div><br>
+
+            <div id="follow-container">
+                <h1>Follow for More Projects </h1>
+
+                <a href="https://github.com/Astroes619" target="_blank"> <img id="github" src="https://raw.githubusercontent.com/Astroes619/Oracle_assets/main/logos/mark-github.png" width="40" height="40" > </a>
+                <a href="https://www.linkedin.com/in/atheequehasan/" target="_blank"> <img id="linkedin" src="https://raw.githubusercontent.com/Astroes619/Oracle_assets/main/logos/%5BCITYPNG%201.png"width="40" height="40" > </a>
+                
+
+            </div>
+        </div>
+    </div>
+    <footer>
+        &copy; 2023 Atheeque Hasan  - All rights reserved <br>
+         WITH ❤️ BY Atheeque Hasan - Final Year Project 2023
+
+    </footer>
+
+    
+
+    <!-- Add your JavaScript code here -->
+    <script>
+        let video = document.getElementById("video");
+    
+        function setupCamera() {
+            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices
+                    .getUserMedia({ video: true })
+                    .then(function (stream) {
+                        video.srcObject = stream;
+                        video.onloadedmetadata = function () {
+                            video.play();
+                        };
+                    })
+                    .catch(function (error) {
+                        console.error("Error: Unable to access the camera.", error);
+                    });
+            } else {
+                console.error("Error: getUserMedia is not supported by this browser.");
+            }
+        }
+    
+        setupCamera();
+    </script>
+    
+    
+</body>
+</html>
