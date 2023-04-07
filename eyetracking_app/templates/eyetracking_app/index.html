@@ -183,27 +183,33 @@
 
     <!-- Add your JavaScript code here -->
     <script>
-        let video = document.getElementById("video");
+        document.addEventListener('DOMContentLoaded', function() {
+    // Your code here
+
+
+    let video = document.getElementById("video");
     
-        function setupCamera() {
-            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-                navigator.mediaDevices
-                    .getUserMedia({ video: true })
-                    .then(function (stream) {
-                        video.srcObject = stream;
-                        video.onloadedmetadata = function () {
-                            video.play();
-                        };
-                    })
-                    .catch(function (error) {
-                        console.error("Error: Unable to access the camera.", error);
-                    });
-            } else {
-                console.error("Error: getUserMedia is not supported by this browser.");
-            }
+    function setupCamera() {
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices
+                .getUserMedia({ video: true })
+                .then(function (stream) {
+                    video.srcObject = stream;
+                    video.onloadedmetadata = function () {
+                        video.play();
+                    };
+                })
+                .catch(function (error) {
+                    console.error("Error: Unable to access the camera.", error);
+                });
+        } else {
+            console.error("Error: getUserMedia is not supported by this browser.");
         }
-    
-        setupCamera();
+    }
+
+    setupCamera();
+});
+
     </script>
     
     
