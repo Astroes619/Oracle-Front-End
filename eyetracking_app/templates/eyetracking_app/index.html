@@ -99,7 +99,7 @@
         <div>
             <img id="header-image" src="https://raw.githubusercontent.com/Astroes619/Oracle_assets/main/logos/oracle.png" > <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris </p>
             <div id="content">
-                <div id="video-container">
+                <!-- <div id="video-container">
                     <video id="video" src="{% url 'dynamic_stream' %}" alt="Video stream not available"></video>
                     <br>
                     <i class="fas fa-camera"></i> Some text about the application goes here
@@ -107,7 +107,13 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ullamco laboris nisi ut aliquip ex ea commodo consequat. ullamco laboris nisi ut.
                         </div>
 
-                </div>
+                </div> -->
+                <video id="input-video" width="640" height="480" autoplay></video>
+  <video id="output-video" width="640" height="480" autoplay></video>
+  <form id="csrf-form">
+    {% csrf_token %}
+  </form>
+                  
                 <div id="details-container">
                     <ul>
                         <h3>Lorem ipsum dolor sit amet,</h3>
@@ -121,12 +127,12 @@
                 </div>
             </div>
 
-            <div id="question-container">
+            <!-- <div id="question-container">
                 <h1> Question Paper </h1>  
                 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfOU7TIp9GtvrlzSRNfz8n5Kn2iw8I28zFaT81tHUlZyFnofw/viewform?embedded=true" width="640" height="3538" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
                 
                 
-            </div>
+            </div> -->
 
             <div id="oracle-container">
                 <div id="usage-container">
@@ -184,7 +190,7 @@
     
 
     <!-- Add your JavaScript code here -->
-    <script>
+    <!-- <script>
         
 
 
@@ -211,8 +217,48 @@
     setupCamera();
 
 
+    </script> -->
+    
+    <script>
+        // Step 1: Access the user's web camera and capture video
+const video = document.createElement('video');
+navigator.mediaDevices.getUserMedia({video: true})
+  .then(stream => {
+    video.srcObject = stream;
+    video.play();
+  });
+
+// Step 2: Use the Fetch API to send the video stream to the Python Django backend
+const csrf_token = document.querySelector('[name="csrfmiddlewaretoken"]').value;
+const canvas = document.createElement('canvas');
+const ctx = canvas.getContext('2d');
+
+setInterval(() => {
+  // Draw the video stream onto the canvas
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
+  ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+  // Send the canvas image to the backend
+  canvas.toBlob(blob => {
+    const formData = new FormData();
+    formData.append('image', blob, 'image.jpg');
+    formData.append('csrfmiddlewaretoken', csrf_token);
+    fetch('/eye_detection', {
+      method: 'POST',
+      body: formData
+    })
+      .then(response => response.blob())
+      .then(blob => {
+        // Step 4: Display the modified video stream on the webpage
+        const url = URL.createObjectURL(blob);
+        const outputVideo = document.querySelector('#output-video');
+        outputVideo.src = url;
+      });
+  }, 'image/jpeg');
+}, 100);
+
+
     </script>
-    
-    
 </body>
 </html>
