@@ -7,5 +7,7 @@ urlpatterns = [
     path('live_feed/', views.live_feed, name='live_feed'), 
     path('dynamic_stream/', views.dynamic_stream, name='dynamic_stream'),
     path('eye_detection', views.eye_detection, name='eye_detection'),
+    path('toggle_recording/', views.toggle_recording, name='toggle_recording'),
+
 
 ]

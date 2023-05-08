@@ -12,6 +12,115 @@
     <link rel="icon" href="{% static 'favicon.ico' %}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+   
+    <!-- Add your custom JavaScript code after the Firebase SDK script tags -->
+  <!-- <script>
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyC6SbnHUar3vNjJwXIntr5T_wcSyt-9j_A",
+        authDomain: "oraclebeta-94622.firebaseapp.com",
+        projectId: "oraclebeta-94622",
+        storageBucket: "oraclebeta-94622.appspot.com",
+        messagingSenderId: "378365720688",
+        appId: "1:378365720688:web:12039b6f8890e37ac5dcb5",
+    };
+
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const storage = firebase.storage(app);
+
+    //  custom JavaScript code goes here
+
+    import { getStorage, ref, uploadBytes } from "firebase/storage";
+
+    const recordButton = document.getElementById("recordButton");
+    let mediaRecorder;
+    let recordedBlobs;
+
+    function handleDataAvailable(event) {
+    if (event.data && event.data.size > 0) {
+    recordedBlobs.push(event.data);
+    }
+    }
+
+    recordButton.addEventListener("click", async () => {
+    if (!mediaRecorder || mediaRecorder.state === "inactive") {
+    recordedBlobs = [];
+
+    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    mediaRecorder = new MediaRecorder(stream);
+
+    mediaRecorder.ondataavailable = handleDataAvailable;
+    mediaRecorder.start();
+    recordButton.textContent = "Stop Recording";
+    } else {
+    mediaRecorder.stop();
+    recordButton.textContent = "Start Recording";
+
+    const blob = new Blob(recordedBlobs, { type: "video/webm" });
+    const storage = getStorage();
+    const fileName = `recorded-video-${Date.now()}.webm`;
+    const videoRef = ref(storage, `videos/${fileName}`);
+
+    uploadBytes(videoRef, blob).then((snapshot) => {
+        console.log("Uploaded a blob or file!");
+    });
+    }
+    });
+
+    import { ref, put } from "firebase/storage";
+
+    // Create a storage reference for the file
+    const storageRef = ref(storage, 'your-folder/filename.ext');
+
+    // Upload the file
+    const uploadTask = put(storageRef, file); // 'file' should be a File object
+
+
+  </script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+        function toggleRecording() {
+        $.ajax({
+            url: '/toggle_recording/',
+            type: 'POST',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('X-CSRFToken', csrftoken);
+            },
+            success: function (response) {
+                if (response.status === 'success') {
+                    console.log('Recording toggled');
+                } else {
+                    console.log('Error: ' + response.message);
+                }
+            }
+        });
+    }
+
+    </script>
+
+
+
+<script>
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getCookie('csrftoken');
+</script>
+
+    
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -129,7 +238,16 @@
                         <label for="module-number">Module Number:</label>
                         <input type="text" id="module-number" required><br><br>
                         <button type="submit">Submit</button>
-                      </form>           
+                        </form>
+
+                        <button onclick="toggleRecording()">Toggle Recording</button>
+
+                
+                      <!-- <form id="video-form" >
+                        <input type="file" id="video-file" accept="video/*">
+                        <button type="submit">Upload Video</button>
+                        </form> -->
+
                 </div>
             </div>
 
@@ -223,8 +341,10 @@
     setupCamera();
 
 
+
     </script>
     
+   
     
 </body>
 </html>
