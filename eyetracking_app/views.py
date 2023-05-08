@@ -1,3 +1,5 @@
+import logging
+
 import json
 import os
 import csv
@@ -14,6 +16,30 @@ from io import BytesIO
 
 
 from django.views.decorators.csrf import csrf_exempt
+
+# debugging ML 
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+handler = logging.FileHandler('debug.log')
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
+
+
+logger.debug("Loading the trained model from: %s", "eyetracking_app/trained_model.joblib")
+
+try:
+    clf = joblib.load("eyetracking_app/trained_model.joblib")
+    logger.debug("Trained model loaded successfully.")
+except Exception as e:
+    logger.error("Failed to load the trained model: %s", str(e))
+
+logger.debug("Received frame for eye detection.")
+logger.debug("Generating frames for video streaming.")
+logger.debug("Serving dynamic video stream.")
+
+
+
 
 
 recording = False
